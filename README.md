@@ -1,7 +1,6 @@
 # Prompt Haus
 
 > The smallest coworking space in Kraków for AI enthusiasts
-> Launching October 2025
 
 ## About
 
@@ -11,11 +10,10 @@ Prompt Haus is a local coworking space in Kraków dedicated to the AI community.
 
 ### 🖥️ Coworking
 - **Only 4 permanent desks** - Reserved for dedicated AI professionals
-- **Hot desks** - Drop in anytime for flexible working
-- **Dog-friendly environment** - Bring your furry coding companion
+- **Hot desks** - You can also drop in anytime for flexible working (subject to availability)
 
 ### Weekly Hackathons
-Every Thursday, we host 3-hour hackathons with one unique prompt challenge. Perfect for:
+Every Thursday at 18:00, we host hackathons with one unique prompt challenge. Perfect for:
 - Rapid prototyping
 - Skill development
 - Networking with fellow AI enthusiasts
