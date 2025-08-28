@@ -1,0 +1,359 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: url('assets/page-background.jpeg') center/cover fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Responsive scaling */
+:root {
+    --scale: min(calc(100vw / 480), calc(100vh / 640));
+}
+
+/* Game container with fixed logical size */
+.game-container {
+    width: 480px;
+    height: 640px;
+    position: relative;
+    transform: scale(var(--scale));
+    transform-origin: center center;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+/* Layer base styles */
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.layer-reset {
+    pointer-events: none;
+}
+
+
+/* Layer base styles */
+.layer-bars{
+    position: absolute;
+    top: 0;
+    transform: translateY(-420px) translateX(40px);
+    left: 0;
+    pointer-events: none;
+}
+
+/* Layer base styles */
+.layer-buttons {
+    position: absolute;
+    top: 250px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.layer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+/* Layer 0: Page background */
+.page-background {
+    background: transparent;
+    z-index: 0;
+}
+
+/* Layer 1: Background */
+.background {
+    z-index: 1;
+}
+
+.background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/background.png') center/cover;
+}
+
+/* Layer 2: Tamagotchi sprite */
+.tamagotchi {
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tamagotchi-sprite {
+    width: auto;
+    height: auto;
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+/* Shake animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+}
+
+.shake {
+    animation: shake 0.1s ease-in-out infinite;
+}
+
+/* Layer 3: Progress bars */
+.progress-bars {
+    z-index: 3;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    justify-content: flex-end;
+    height: 100%;
+    width: 148px;
+    opacity: 0.5;
+}
+
+.bar-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.bar-label {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    min-width: 50px;
+}
+
+.bar-track {
+    flex: 1;
+    height: 50px;
+    background: rgba(0,0,0,0.5);
+    border: 2px solid #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bar-fill {
+    height: 100%;
+    transition: width 150ms linear;
+    border-radius: 8px;
+}
+
+.health-fill {
+    background: linear-gradient(90deg, #ff4444, #ff6666);
+}
+
+.sleep-fill {
+    background: linear-gradient(90deg, #4444ff, #6666ff);
+}
+
+.fun-fill {
+    background: linear-gradient(90deg, #44ff44, #66ff66);
+}
+
+/* Bar color states */
+.bar-fill.high {
+    background: linear-gradient(90deg, #44ff44, #66ff66);
+}
+
+.bar-fill.medium {
+    background: linear-gradient(90deg, #ffff44, #ffff66);
+}
+
+.bar-fill.low {
+    background: linear-gradient(90deg, #ff4444, #ff6666);
+}
+
+/* Pulse animation for low bars */
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+.bar-fill.pulse {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+/* Layer 4: Progress bar cover */
+.progress-cover {
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* Layer 5: Overlay */
+.overlay {
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.overlay.warning {
+    opacity: 1;
+}
+
+/* Layer 6: Frame */
+.frame {
+    z-index: 6;
+    pointer-events: none;
+}
+
+.frame-bezel {
+    width: 100%;
+    height: 100%;
+    background: url('assets/frame.png') center/cover;
+}
+
+/* Layer 7: Buttons */
+.buttons {
+    z-index: 7;
+    position: absolute;
+    bottom: 0px;
+    left: 25px;
+    display: flex;
+    gap: 5px;
+    pointer-events: auto;
+}
+
+.game-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.1s ease;
+    pointer-events: auto;
+}
+
+.game-btn:hover {
+    transform: scale(1.05);
+}
+
+.game-btn:active {
+    transform: scale(0.95);
+}
+
+.game-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.game-btn img {
+    width: 110px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.reset-btn {
+    width: 100px;
+    height: 60px;
+    object-fit: contain;
+    background: #ff4444;
+}
+
+/* Pet area for interactions */
+.pet-area {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    z-index: 8;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+/* Sleep state dimming - removed */
+
+/* Glitch effect */
+@keyframes glitch {
+    0%, 100% { opacity: 0; }
+    10%, 90% { opacity: 0.1; }
+    50% { opacity: 0.2; }
+}
+
+.glitch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.1) 2px,
+        rgba(255,255,255,0.1) 4px
+    );
+    z-index: 10;
+    pointer-events: none;
+    animation: glitch 1s ease-in-out;
+}
+
+/* Time counter */
+.time-counter {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    z-index: 10;
+    color: #000;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.time-counter .current-time,
+.time-counter .max-time {
+    margin: 2px 0;
+}
+
+.time-counter span:first-child {
+    color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .game-container {
+        transform: scale(calc(100vw / 480));
+    }
+}
+
+@media (max-height: 640px) {
+    .game-container {
+        transform: scale(calc(100vh / 640));
+    }
+}

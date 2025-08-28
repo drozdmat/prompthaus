@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamagotchi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Layer 0: Page background -->
+        <div class="layer page-background"></div>
+        
+        <!-- Layer 1: Background -->
+        <div class="layer background"></div>
+        
+        <!-- Layer 2: Tamagotchi sprite -->
+        <div class="layer tamagotchi">
+            <img id="tamagotchi-sprite" src="assets/idle.png" alt="Tamagotchi">
+        </div>
+        
+        <!-- Layer 3: Progress bars -->
+        <div class="layer-bars progress-bars">
+            <div class="bar-container">
+                <div class="bar-track">
+                    <div id="health-bar" class="bar-fill health-fill"></div>
+                </div>
+            </div>
+            <div class="bar-container">
+                <div class="bar-track">
+                    <div id="sleep-bar" class="bar-fill sleep-fill"></div>
+                </div>
+            </div>
+            <div class="bar-container">
+                <div class="bar-track">
+                    <div id="fun-bar" class="bar-fill fun-fill"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Layer 4: Progress bar cover -->
+        <div class="layer progress-cover">
+            <img src="assets/progress-bar-cover.png" alt="Progress bar cover">
+        </div>
+        
+        <!-- Layer 5: Overlay (multiply blend mode) -->
+        <div class="layer overlay">
+            <img id="overlay-img" src="assets/overlay.png" alt="Overlay">
+        </div>
+        
+        <!-- Layer 6: Frame -->
+        <div class="layer frame">
+            <div class="frame-bezel"></div>
+        </div>
+        
+        <!-- Layer 7: Buttons -->
+        <div class="layer-buttons buttons">
+            <button id="eat-btn" class="game-btn eat-btn">
+                <img src="assets/eat-button.png" alt="Eat">
+            </button>
+            <button id="sleep-btn" class="game-btn sleep-btn">
+                <img src="assets/sleep-button.png" alt="Sleep">
+            </button>
+            <button id="play-btn" class="game-btn play-btn">
+                <img src="assets/play-button.png" alt="Play">
+            </button>
+            <button id="reset-btn" class="game-btn reset-btn" style="display: none;">
+                Reset
+            </button>
+        </div>
+
+        <div class="layer-reset">
+            <button id="button-change" class="game-btn reset-btn" style="display: none;">
+                Change
+            </button>
+        </div>
+        
+        <!-- Pet area for hover/click interactions -->
+        <div id="pet-area" class="pet-area"></div>
+        
+        <!-- Alive time counter -->
+        <div class="time-counter">
+            <div class="current-time">
+                <span>Alive: </span>
+                <span id="alive-time">00:00:00</span>
+            </div>
+            <div class="max-time">
+                <span>Record: </span>
+                <span id="max-time">00:00:00</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

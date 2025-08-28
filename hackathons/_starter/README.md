@@ -11,6 +11,9 @@ Basic chat completion setup and integration setup for each AI service:
 - [OpenAI](openai/direct-open-ai.ipynb)
 - [LangChain](langchain/langchain-basics.ipynb)
 
+Local react native voice agent example:
+- [React Native Voice Agent - TheWidlarzGroup](https://github.com/TheWidlarzGroup/react-native-voice-agent)
+
 ## 📁 Available Resources
 
 ### Azure OpenAI Examples
