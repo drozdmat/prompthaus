@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamagotchi Web App</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Tamagotchi Device Container -->
+        <div class="tamagotchi-device">
+            <!-- Screen Area -->
+            <div class="screen">
+                <!-- Status Bar -->
+                <div class="status-bar">
+                    <div class="stat-group">
+                        <span class="stat-label">🍕</span>
+                        <div class="stat-bar">
+                            <div class="stat-fill hunger-fill" id="hunger-fill"></div>
+                        </div>
+                        <span class="stat-value" id="hunger-value">50</span>
+                    </div>
+                    
+                    <div class="stat-group">
+                        <span class="stat-label">😊</span>
+                        <div class="stat-bar">
+                            <div class="stat-fill happiness-fill" id="happiness-fill"></div>
+                        </div>
+                        <span class="stat-value" id="happiness-value">75</span>
+                    </div>
+                    
+                    <div class="stat-group">
+                        <span class="stat-label">⚡</span>
+                        <div class="stat-bar">
+                            <div class="stat-fill energy-fill" id="energy-fill"></div>
+                        </div>
+                        <span class="stat-value" id="energy-value">100</span>
+                    </div>
+                </div>
+
+                <!-- Pet Display Area -->
+                <div class="pet-display">
+                    <!-- Background Grid -->
+                    <div class="grid-background"></div>
+                    
+                    <!-- Pet Info -->
+                    <div class="pet-info">
+                        <div class="pet-name" id="pet-name">Tama</div>
+                        <div class="pet-age" id="pet-age">Age: 0 min</div>
+                    </div>
+                    
+                    <!-- Main Pet Display -->
+                    <div class="pet-container" id="pet-container">
+                        <div class="mood-emoji" id="mood-emoji">😊</div>
+                        <div class="pet-status" id="pet-status">Alive</div>
+                    </div>
+                    
+                    <!-- Speech Bubble -->
+                    <div class="speech-bubble" id="speech-bubble">
+                        <div class="speech-text" id="speech-text">Hello! I'm your digital pet! 🎮</div>
+                        <div class="speech-arrow"></div>
+                    </div>
+                    
+                    <!-- Death Overlay -->
+                    <div class="death-overlay" id="death-overlay">
+                        <div class="death-message">
+                            <div class="death-icon">💀</div>
+                            <div class="death-text">RIP</div>
+                            <div class="death-subtext">Your pet has passed away</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="action-btn feed-btn" id="feed-btn" data-action="feed">
+                        <span class="btn-icon">🍕</span>
+                        <span class="btn-text">Feed</span>
+                    </button>
+                    
+                    <button class="action-btn play-btn" id="play-btn" data-action="play">
+                        <span class="btn-icon">🎮</span>
+                        <span class="btn-text">Play</span>
+                    </button>
+                    
+                    <button class="action-btn sleep-btn" id="sleep-btn" data-action="sleep">
+                        <span class="btn-icon">😴</span>
+                        <span class="btn-text">Sleep</span>
+                    </button>
+                    
+                    <button class="action-btn pet-btn" id="pet-btn" data-action="pet">
+                        <span class="btn-icon">🤚</span>
+                        <span class="btn-text">Pet</span>
+                    </button>
+                    
+                    <button class="action-btn talk-btn" id="talk-btn">
+                        <span class="btn-icon">💬</span>
+                        <span class="btn-text">Talk</span>
+                    </button>
+                    
+                    <button class="action-btn revive-btn" id="revive-btn" data-action="revive" style="display: none;">
+                        <span class="btn-icon">🔄</span>
+                        <span class="btn-text">Revive</span>
+                    </button>
+                    
+                    <button class="action-btn reset-btn" id="reset-btn">
+                        <span class="btn-icon">🗑️</span>
+                        <span class="btn-text">Reset Game</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Device Body -->
+            <div class="device-body">
+                <div class="device-brand">TAMAGOTCHI</div>
+                <div class="device-model">Web Edition v1.0</div>
+            </div>
+        </div>
+
+        <!-- Chat Input (Hidden by default) -->
+        <div class="chat-input" id="chat-input" style="display: none;">
+            <input type="text" id="message-input" placeholder="Type a message..." maxlength="100">
+            <button id="send-btn">Send</button>
+            <button id="cancel-btn">Cancel</button>
+        </div>
+
+        <!-- Connection Status -->
+        <div class="connection-status" id="connection-status">
+            <span class="status-indicator offline" id="status-indicator"></span>
+            <span class="status-text" id="status-text">Connecting...</span>
+        </div>
+
+        <!-- Debug Panel (Toggle with Ctrl+D) -->
+        <div class="debug-panel" id="debug-panel" style="display: none;">
+            <h3>Debug Info</h3>
+            <div class="debug-info">
+                <div>WebSocket: <span id="ws-status">Disconnected</span></div>
+                <div>Last Update: <span id="last-update">Never</span></div>
+                <div>Total Interactions: <span id="total-interactions">0</span></div>
+                <div>Deaths: <span id="death-count">0</span></div>
+            </div>
+            <div class="debug-actions">
+                <button id="debug-state">Get State</button>
+                <button id="debug-clear">Clear Cache</button>
+                <button id="debug-ping">Ping</button>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div class="toast-container" id="toast-container"></div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

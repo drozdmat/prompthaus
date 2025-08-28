@@ -1,0 +1,720 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Press Start 2P', monospace;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #00ff41;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: backgroundGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundGlow {
+    0% { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%); }
+    100% { background: linear-gradient(135deg, #1a0a1a 0%, #2e1a2e 50%, #3e1650 100%); }
+}
+
+/* Main Container */
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Tamagotchi Device */
+.tamagotchi-device {
+    background: #2a2a3e;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 
+        0 0 30px rgba(0, 255, 65, 0.2),
+        inset 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid #00ff41;
+    animation: devicePulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes devicePulse {
+    0% { box-shadow: 0 0 30px rgba(0, 255, 65, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.5); }
+    100% { box-shadow: 0 0 50px rgba(0, 255, 65, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.5); }
+}
+
+/* Screen */
+.screen {
+    width: 400px;
+    height: 600px;
+    background: #0a0a0a;
+    border: 3px solid #333;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Status Bar */
+.status-bar {
+    background: #1a1a1a;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #333;
+    font-size: 8px;
+}
+
+.stat-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 12px;
+    text-shadow: 0 0 5px currentColor;
+}
+
+.stat-bar {
+    width: 80px;
+    height: 8px;
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.stat-fill {
+    height: 100%;
+    transition: width 0.5s ease-out;
+    position: relative;
+    border-radius: 3px;
+}
+
+.hunger-fill {
+    background: linear-gradient(90deg, #ff4444 0%, #ff8844 50%, #ffaa44 100%);
+    animation: hungerPulse 2s ease-in-out infinite alternate;
+}
+
+.happiness-fill {
+    background: linear-gradient(90deg, #44ff44 0%, #44ff88 50%, #88ffaa 100%);
+    animation: happinessPulse 2s ease-in-out infinite alternate;
+}
+
+.energy-fill {
+    background: linear-gradient(90deg, #4444ff 0%, #8844ff 50%, #aa44ff 100%);
+    animation: energyPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes hungerPulse {
+    0% { box-shadow: inset 0 0 5px rgba(255, 68, 68, 0.5); }
+    100% { box-shadow: inset 0 0 10px rgba(255, 68, 68, 0.8); }
+}
+
+@keyframes happinessPulse {
+    0% { box-shadow: inset 0 0 5px rgba(68, 255, 68, 0.5); }
+    100% { box-shadow: inset 0 0 10px rgba(68, 255, 68, 0.8); }
+}
+
+@keyframes energyPulse {
+    0% { box-shadow: inset 0 0 5px rgba(68, 68, 255, 0.5); }
+    100% { box-shadow: inset 0 0 10px rgba(68, 68, 255, 0.8); }
+}
+
+.stat-value {
+    color: #00ff41;
+    font-size: 6px;
+    text-align: center;
+    min-width: 20px;
+}
+
+/* Pet Display */
+.pet-display {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: #0f0f0f;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+}
+
+.grid-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.3;
+}
+
+.pet-info {
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: #00ff41;
+}
+
+.pet-name {
+    font-size: 15px;
+    text-shadow: 0 0 10px currentColor;
+    margin-bottom: 5px;
+}
+
+.pet-age {
+    opacity: 0.7;
+}
+
+.pet-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.mood-emoji {
+    font-size: 80px;
+    margin-bottom: 20px;
+    animation: moodBounce 3s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+    transition: all 0.5s ease-out;
+}
+
+@keyframes moodBounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0) scale(1); }
+    40% { transform: translateY(-10px) scale(1.05); }
+    60% { transform: translateY(-5px) scale(1.02); }
+}
+
+.mood-emoji.dead {
+    animation: deathShake 0.5s ease-in-out infinite;
+    filter: grayscale(100%);
+}
+
+.mood-emoji.talking {
+    animation: talkingBounce 0.6s ease-in-out infinite;
+    transform-origin: center bottom;
+}
+
+.mood-emoji.sick {
+    animation: sickWobble 1s ease-in-out infinite;
+    filter: hue-rotate(90deg) saturate(1.2);
+}
+
+@keyframes deathShake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-2deg); }
+    75% { transform: rotate(2deg); }
+}
+
+@keyframes talkingBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    25% { transform: translateY(-3px) scale(1.02); }
+    50% { transform: translateY(-1px) scale(1.01); }
+    75% { transform: translateY(-2px) scale(1.015); }
+}
+
+@keyframes sickWobble {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-2px) rotate(-1deg); }
+    50% { transform: translateX(0) rotate(0deg); }
+    75% { transform: translateX(2px) rotate(1deg); }
+}
+
+.pet-status {
+    font-size: 12px;
+    color: #00ff41;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Speech Bubble - Upper-right Corner Outside Game Box */
+.speech-bubble {
+    position: absolute;
+    top: -20px;
+    right: -280px;
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid #00ff41;
+    border-radius: 15px 15px 15px 15px;
+    padding: 15px;
+    width: 250px;
+    max-width: 250px;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
+    box-shadow: 
+        0 0 25px rgba(0, 255, 65, 0.4),
+        inset 0 0 15px rgba(0, 255, 65, 0.1);
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 15;
+}
+
+.speech-bubble.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.speech-text {
+    color: #00ff41;
+    word-wrap: break-word;
+    animation: typewriter 0.5s ease-out;
+}
+
+@keyframes typewriter {
+    from { width: 0; overflow: hidden; }
+    to { width: 100%; }
+}
+
+.speech-arrow {
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 12px solid #00ff41;
+}
+
+.speech-arrow:after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid rgba(0, 0, 0, 0.95);
+}
+
+/* Death Overlay */
+.death-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease-out;
+    z-index: 5;
+}
+
+.death-overlay.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.death-message {
+    text-align: center;
+    color: #ff4444;
+}
+
+.death-icon {
+    font-size: 60px;
+    margin-bottom: 10px;
+    animation: deathFloat 2s ease-in-out infinite alternate;
+}
+
+@keyframes deathFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-10px); }
+}
+
+.death-text {
+    font-size: 16px;
+    text-shadow: 0 0 10px currentColor;
+    margin-bottom: 5px;
+}
+
+.death-subtext {
+    font-size: 8px;
+    opacity: 0.8;
+}
+
+/* Action Buttons */
+.action-buttons {
+    background: #1a1a1a;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    border-top: 2px solid #333;
+}
+
+.action-btn {
+    background: #333;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: #00ff41;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    min-height: 60px;
+    justify-content: center;
+}
+
+.action-btn:hover:not(:disabled) {
+    background: #444;
+    border-color: #00ff41;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
+}
+
+.action-btn:active:not(:disabled) {
+    transform: translateY(0px);
+    box-shadow: 0 2px 5px rgba(0, 255, 65, 0.2);
+}
+
+.action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #222;
+    border-color: #333;
+}
+
+.btn-icon {
+    font-size: 16px;
+    text-shadow: 0 0 5px currentColor;
+}
+
+.btn-text {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.revive-btn {
+    grid-column: span 3;
+    background: #440044;
+    border-color: #ff00ff;
+    color: #ff00ff;
+}
+
+.revive-btn:hover:not(:disabled) {
+    background: #660066;
+    border-color: #ff44ff;
+    box-shadow: 0 5px 15px rgba(255, 0, 255, 0.3);
+}
+
+.reset-btn {
+    grid-column: span 3;
+    background: #441100;
+    border-color: #ff4400;
+    color: #ff6644;
+    position: relative;
+    overflow: hidden;
+}
+
+.reset-btn:hover:not(:disabled) {
+    background: #661100;
+    border-color: #ff6644;
+    box-shadow: 0 5px 15px rgba(255, 68, 0, 0.3);
+    animation: resetPulse 1s ease-in-out infinite alternate;
+}
+
+.reset-btn:active:not(:disabled) {
+    background: #330800;
+    transform: translateY(1px);
+}
+
+.reset-btn .btn-icon {
+    font-size: 18px;
+    animation: shakeWarning 2s ease-in-out infinite;
+}
+
+@keyframes resetPulse {
+    0% { 
+        box-shadow: 0 5px 15px rgba(255, 68, 0, 0.3);
+        border-color: #ff6644;
+    }
+    100% { 
+        box-shadow: 0 8px 25px rgba(255, 68, 0, 0.5);
+        border-color: #ff8844;
+    }
+}
+
+@keyframes shakeWarning {
+    0%, 90%, 100% { transform: translateX(0); }
+    92%, 96% { transform: translateX(-1px); }
+    94%, 98% { transform: translateX(1px); }
+}
+
+/* Chat Input */
+.chat-input {
+    background: #2a2a3e;
+    border: 2px solid #00ff41;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 400px;
+}
+
+.chat-input input {
+    flex: 1;
+    background: #0a0a0a;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 8px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: #00ff41;
+}
+
+.chat-input input:focus {
+    outline: none;
+    border-color: #00ff41;
+    box-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+}
+
+.chat-input button {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: #00ff41;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+}
+
+.chat-input button:hover {
+    background: #444;
+    border-color: #00ff41;
+}
+
+/* Connection Status */
+.connection-status {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff4444;
+    animation: statusBlink 2s ease-in-out infinite;
+}
+
+.status-indicator.online {
+    background: #44ff44;
+    animation: statusGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes statusBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+@keyframes statusGlow {
+    0% { box-shadow: 0 0 5px rgba(68, 255, 68, 0.5); }
+    100% { box-shadow: 0 0 15px rgba(68, 255, 68, 0.8); }
+}
+
+.status-text {
+    color: #00ff41;
+}
+
+/* Device Body */
+.device-body {
+    text-align: center;
+    padding: 10px;
+    font-size: 8px;
+    color: #666;
+}
+
+.device-brand {
+    font-size: 10px;
+    color: #00ff41;
+    text-shadow: 0 0 5px currentColor;
+    margin-bottom: 5px;
+}
+
+.device-model {
+    opacity: 0.7;
+}
+
+/* Debug Panel */
+.debug-panel {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 8px;
+    width: 250px;
+    color: #00ff41;
+}
+
+.debug-panel h3 {
+    margin-bottom: 10px;
+    font-size: 10px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+}
+
+.debug-info {
+    margin-bottom: 10px;
+}
+
+.debug-info div {
+    margin-bottom: 3px;
+}
+
+.debug-actions {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.debug-actions button {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 6px;
+    color: #00ff41;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+}
+
+.debug-actions button:hover {
+    background: #444;
+    border-color: #00ff41;
+}
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.toast {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #00ff41;
+    border-radius: 5px;
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #00ff41;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease-out;
+    min-width: 240px;
+    text-align: center;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.error {
+    border-color: #ff4444;
+    color: #ff4444;
+}
+
+.toast.success {
+    border-color: #44ff44;
+    color: #44ff44;
+}
+
+/* Critical State Animations */
+.critical-hunger .hunger-fill {
+    animation: criticalPulse 0.5s ease-in-out infinite alternate;
+}
+
+.critical-happiness .happiness-fill {
+    animation: criticalPulse 0.5s ease-in-out infinite alternate;
+}
+
+.critical-energy .energy-fill {
+    animation: criticalPulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes criticalPulse {
+    0% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .screen {
+        width: 350px;
+        height: 525px;
+    }
+    
+    .tamagotchi-device {
+        padding: 15px;
+    }
+    
+    .chat-input {
+        width: 350px;
+    }
+    
+    .mood-emoji {
+        font-size: 60px;
+    }
+    
+    .action-buttons {
+        padding: 10px;
+        gap: 8px;
+    }
+    
+    .action-btn {
+        min-height: 50px;
+        padding: 8px;
+    }
+}
