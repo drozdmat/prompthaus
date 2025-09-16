@@ -26,11 +26,10 @@ Each team project will be scored by all of the other participants. **Best ideas 
 ## 📅 Hackathon Schedule
 
 ### Past Events
--
+- **Hackathon #000**: 28.08.2025 - Tamagotchi AI Companion (internal testing)
 
 ### Upcoming Events
-- **Hackathon #000**: 28.08.2025 - Tamagotchi AI Companion (internal testing)
-- **Hackathon #001**: 18.09.2025 - [Theme TBD]
+- **Hackathon #001**: 18.09.2025 - Magical Moving Portraits
 - **Hackathon #002**: 25.09.2025 - [Theme TBD]
 - **Hackathon #003**: 02.10.2025 - [Theme TBD]
 - **Hackathon #004**: 09.10.2025 - [Theme TBD]
