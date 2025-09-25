@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player - Sequential Playback</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="../../assets/frame_1.png" as="image">
+    <link rel="preload" href="../../outputs/center-right.mp4" as="video">
+    <link rel="preload" href="../../outputs/left-center.mp4" as="video">
+</head>
+<body>
+    <div class="container">
+        <div class="video-container">
+            <video id="video1" class="video-player" height="400" preload="auto">
+                <source src="../../outputs/center-right.mp4" type="video/mp4">
+            </video>
+            <video id="video2" class="video-player" height="400" preload="auto" style="display: none;">
+                <source src="../../outputs/left-center.mp4" type="video/mp4">
+            </video>
+            <img src="../../assets/frame_1.png" alt="Frame" class="video-frame">
+        </div>
+        <div class="controls">
+            <button id="playBtn" class="btn"></button>
+            <button id="resetBtn" class="btn"></button>
+        </div>
+        <div class="status">
+            <p id="statusText"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
