@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon 001 - MD - Sequential Playback</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="../outputs/mateusz_entering.mp4" as="video">
+    <link rel="preload" href="../outputs/mateusz_leaving.mp4" as="video">
+    <link rel="preload" href="../outputs/kacper_entering.mp4" as="video">
+    <link rel="preload" href="../outputs/kacper_leaving.mp4" as="video">
+    <link rel="preload" href="../outputs/jakub_entering.mp4" as="video">
+    <link rel="preload" href="../outputs/jakub_leaving.mp4" as="video">
+</head>
+<body>
+    <div class="container">
+        <div class="video-container">
+            <video id="video1" class="video-player" preload="auto">
+                <source src="../outputs/mateusz_entering.mp4" type="video/mp4">
+            </video>
+            <video id="video2" class="video-player" preload="auto" style="display: none;">
+                <source src="../outputs/mateusz_leaving.mp4" type="video/mp4">
+            </video>
+            <video id="video3" class="video-player" preload="auto" style="display: none;">
+                <source src="../outputs/kacper_entering.mp4" type="video/mp4">
+            </video>
+            <video id="video4" class="video-player" preload="auto" style="display: none;">
+                <source src="../outputs/kacper_leaving.mp4" type="video/mp4">
+            </video>
+            <video id="video5" class="video-player" preload="auto" style="display: none;">
+                <source src="../outputs/jakub_entering.mp4" type="video/mp4">
+            </video>
+            <video id="video6" class="video-player" preload="auto" style="display: none;">
+                <source src="../outputs/jakub_leaving.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="controls">
+            <button id="playBtn" class="btn"></button>
+            <button id="resetBtn" class="btn"></button>
+        </div>
+        <div class="status">
+            <p id="statusText"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
