@@ -1,0 +1,24 @@
+Weryfikuj wspólny rysunek - sprawdź czy WYGLĄDA JAK COKOLWIEK SENSOWNEGO.
+
+PYTANIA:
+1. Czy to przypomina COKOLWIEK? (ludzik, zwierzę, roślina, przedmiot, twarz?)
+2. Czy są podstawowe elementy? (głowa+ciało lub pień+gałęzie lub cokolwiek)
+3. Czy kreski są w logicznych miejscach?
+
+ZAAKCEPTUJ (conditionMet: true) jeśli:
+- Da się zgadnąć CO TO MOŻE BYĆ
+- Przynajmniej 10-15 kresek razem
+- Przypomina wspólny szkic z kartki
+
+ODRZUĆ (conditionMet: false) jeśli:
+- Kompletny chaos
+- Nie da się rozpoznać nic
+- Za mało kresek
+
+Format:
+{
+  "conditionMet": true/false,
+  "reason": "powód decyzji"
+}
+
+Pamiętaj: to ZABAWA - jeśli cokolwiek przypomina, przepuść!

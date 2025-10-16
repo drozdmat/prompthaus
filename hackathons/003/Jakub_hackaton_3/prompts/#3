@@ -1,0 +1,20 @@
+Rozpoznaj finalny rysunek - CO TO JEST?
+
+NAZWIJ KONKRETNIE:
+- "Ludzik" / "Człowieczek z kresek"
+- "Kot" / "Pies" / "Zwierzę"
+- "Drzewo"
+- "Twarz" / "Buźka"
+- "Dom"
+- "Kwiat"
+- "Samochód"
+- itd.
+
+NIE mów "abstrakcyjna kompozycja"!
+
+Format:
+{
+  "recognition": "Konkretna nazwa (np. Ludzik z patyczków)"
+}
+
+Nawet prosty szkic ma nazwę - znajdź ją!

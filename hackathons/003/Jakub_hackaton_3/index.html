@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Drawing Chaos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 AI Drawing Chaos</h1>
+            <p class="subtitle">Rysuj z AI - niech chaos prowadzi twórczość!</p>
+        </header>
+
+        <div class="game-container">
+            <div class="canvas-section">
+                <canvas id="drawingCanvas" width="800" height="600"></canvas>
+            </div>
+
+            <div class="control-panel">
+                <div class="game-status">
+                    <h2>Status gry</h2>
+                    <div id="gameStatus">
+                        <p>Faza: <span id="currentPhase">Oczekiwanie na start</span></p>
+                        <p>Tura: <span id="currentTurn">0</span></p>
+                        <p>Prompt: <span id="activeAI">-</span></p>
+                    </div>
+                </div>
+
+                <div class="shape-selector" id="shapeSelector">
+                    <h3>Wybierz kształt początkowy</h3>
+                    <div class="shape-buttons">
+                        <button data-shape="circle">⭕ Koło</button>
+                        <button data-shape="rectangle">◻️ Prostokąt</button>
+                        <button data-shape="line">📏 Linia</button>
+                        <button data-shape="triangle">🔺 Trójkąt</button>
+                        <button data-shape="ellipse">⬭ Elipsa</button>
+                    </div>
+                </div>
+
+                <div class="color-picker">
+                    <label for="colorInput">Kolor:</label>
+                    <input type="color" id="colorInput" value="#000000">
+                </div>
+
+                <div class="controls">
+                    <button id="startBtn" class="btn-primary">Rozpocznij rysowanie</button>
+                    <button id="clearBtn" class="btn-secondary">Wyczyść</button>
+                </div>
+
+                <div class="ai-thinking" id="aiThinking" style="display:none;">
+                    <div class="spinner"></div>
+                    <p>AI myśli...</p>
+                </div>
+
+                <div class="history">
+                    <h3>Historia ruchów</h3>
+                    <div id="moveHistory" class="move-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="user-input-section" id="userInputSection" style="display:none;">
+            <!-- Sekcja nieużywana w nowym flow -->
+        </div>
+    </div>
+
+    <script src="js/shapes.js"></script>
+    <script src="js/canvas.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
+

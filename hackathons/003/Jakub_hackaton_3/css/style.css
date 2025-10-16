@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.canvas-section {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+#drawingCanvas {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    cursor: crosshair;
+    display: block;
+    background: white;
+}
+
+.control-panel {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.game-status h2 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+#gameStatus p {
+    margin: 8px 0;
+    font-size: 1em;
+}
+
+#gameStatus span {
+    font-weight: bold;
+    color: #764ba2;
+}
+
+.shape-selector h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.shape-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.shape-buttons button {
+    padding: 12px;
+    border: 2px solid #ddd;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s;
+}
+
+.shape-buttons button:hover {
+    border-color: #667eea;
+    background: #f0f4ff;
+    transform: translateY(-2px);
+}
+
+.shape-buttons button.selected {
+    border-color: #667eea;
+    background: #667eea;
+    color: white;
+}
+
+.color-picker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-picker label {
+    font-weight: bold;
+    color: #333;
+}
+
+#colorInput {
+    width: 60px;
+    height: 40px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #e0e0e0;
+}
+
+.ai-thinking {
+    text-align: center;
+    padding: 20px;
+    background: #f0f4ff;
+    border-radius: 8px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f0f0f0;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.history h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.move-list {
+    max-height: 200px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.move-item {
+    padding: 8px;
+    margin-bottom: 5px;
+    background: white;
+    border-left: 3px solid #667eea;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.move-item.user {
+    border-left-color: #764ba2;
+}
+
+.move-item.ai1 {
+    border-left-color: #667eea;
+}
+
+.move-item.ai2 {
+    border-left-color: #f093fb;
+}
+
+.user-input-section {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-input-section h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+#userDirection {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1em;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+#userDirection:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+@media (max-width: 1200px) {
+    .game-container {
+        grid-template-columns: 1fr;
+    }
+    
+    #drawingCanvas {
+        width: 100%;
+        height: auto;
+    }
+}
+
