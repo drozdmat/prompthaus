@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIF Display</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background: white;
+            font-family: Arial, sans-serif;
+        }
+        
+        .gif-container {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .gif-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // List of GIF files - add new ones here as they are created
+        const gifFiles = [
+            'notebooks/outputs/1760641572.gif',
+            'notebooks/outputs/1760641896.gif',
+            'notebooks/outputs/1760642332.gif',
+            'notebooks/outputs/1760642975.gif',
+            'notebooks/outputs/1760643016.gif',
+            'notebooks/outputs/1760643651.gif',
+            'notebooks/outputs/1760643993.gif',
+            'notebooks/outputs/1760644321.gif',
+            'notebooks/outputs/1760644481.gif',
+            'notebooks/outputs/1760645103.gif',
+            'notebooks/outputs/1760645253.gif',
+            'notebooks/outputs/1760645395.gif',
+            'notebooks/outputs/1760645546.gif',
+            'notebooks/outputs/1760645697.gif',
+            'notebooks/outputs/1760645847.gif',
+            'notebooks/outputs/1760645991.gif',
+            'notebooks/outputs/1760646149.gif'
+        ];
+        
+        // Array to store used positions to minimize overlap
+        const usedPositions = [];
+        
+        // Function to get random position with minimal overlap
+        function getRandomPosition() {
+            const maxX = window.innerWidth - 100; // Account for gif width
+            const maxY = window.innerHeight - 100; // Account for gif height
+            const minDistance = 120; // Minimum distance between images
+            
+            let attempts = 0;
+            let position;
+            
+            do {
+                position = {
+                    x: Math.random() * maxX,
+                    y: Math.random() * maxY
+                };
+                attempts++;
+            } while (attempts < 100 && isOverlapping(position, minDistance));
+            
+            usedPositions.push(position);
+            return position;
+        }
+        
+        // Function to check if a position overlaps with existing positions
+        function isOverlapping(newPos, minDistance) {
+            for (const pos of usedPositions) {
+                const distance = Math.sqrt(
+                    Math.pow(newPos.x - pos.x, 2) + Math.pow(newPos.y - pos.y, 2)
+                );
+                if (distance < minDistance) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        // Function to create unique URL for each GIF instance
+        function uniqueSrc(src) {
+            const u = Math.random().toString(36).slice(2);
+            const sep = src.includes('?') ? '&' : '?';
+            return `${src}${sep}u=${u}`;
+        }
+        
+        // Function to create and position GIF
+        function createGif(gifSrc, isSecondCopy = false) {
+            const container = document.createElement('div');
+            container.className = 'gif-container';
+            
+            const img = document.createElement('img');
+            img.alt = 'Random GIF';
+            
+            container.appendChild(img);
+            document.body.appendChild(container);
+            
+            // Set random position
+            const position = getRandomPosition();
+            container.style.left = position.x + 'px';
+            container.style.top = position.y + 'px';
+            
+            const src = uniqueSrc(gifSrc); // Different URL per instance
+            
+            if (isSecondCopy) {
+                // Stagger start with random delay for more natural desync
+                const delayMs = 300 + Math.floor(Math.random() * 1200);
+                setTimeout(() => {
+                    img.src = src;
+                }, delayMs);
+            } else {
+                img.src = src;
+            }
+            
+            return container;
+        }
+        
+        // Create all GIFs (each one three times)
+        gifFiles.forEach(gifSrc => {
+            createGif(gifSrc, false);  // First copy - no delay
+            createGif(gifSrc, true);   // Second copy - random delay
+            createGif(gifSrc, true);   // Third copy - random delay
+        });
+        
+        // Add click handler to reposition GIFs
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'IMG') {
+                const container = e.target.parentElement;
+                // Remove the old position from usedPositions
+                const oldX = parseInt(container.style.left);
+                const oldY = parseInt(container.style.top);
+                usedPositions.forEach((pos, index) => {
+                    if (pos.x === oldX && pos.y === oldY) {
+                        usedPositions.splice(index, 1);
+                    }
+                });
+                // Get new position
+                const position = getRandomPosition();
+                container.style.left = position.x + 'px';
+                container.style.top = position.y + 'px';
+            }
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            // Clear used positions and reposition all GIFs
+            usedPositions.length = 0;
+            const containers = document.querySelectorAll('.gif-container');
+            containers.forEach(container => {
+                const position = getRandomPosition();
+                container.style.left = position.x + 'px';
+                container.style.top = position.y + 'px';
+            });
+        });
+        
+    </script>
+</body>
+</html>
