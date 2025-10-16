@@ -37,9 +37,18 @@
             'notebooks/outputs/1760642332.gif',
             'notebooks/outputs/1760642975.gif',
             'notebooks/outputs/1760643016.gif',
-            'notebooks/outputs/1760643209.gif',
-            'notebooks/outputs/1760643505.gif',
-            'notebooks/outputs/1760643651.gif'
+            'notebooks/outputs/1760643651.gif',
+            'notebooks/outputs/1760643993.gif',
+            'notebooks/outputs/1760644321.gif',
+            'notebooks/outputs/1760644481.gif',
+            'notebooks/outputs/1760645103.gif',
+            'notebooks/outputs/1760645253.gif',
+            'notebooks/outputs/1760645395.gif',
+            'notebooks/outputs/1760645546.gif',
+            'notebooks/outputs/1760645697.gif',
+            'notebooks/outputs/1760645847.gif',
+            'notebooks/outputs/1760645991.gif',
+            'notebooks/outputs/1760646149.gif'
         ];
         
         // Array to store used positions to minimize overlap
@@ -117,10 +126,11 @@
             return container;
         }
         
-        // Create all GIFs (each one twice)
+        // Create all GIFs (each one three times)
         gifFiles.forEach(gifSrc => {
             createGif(gifSrc, false);  // First copy - no delay
-            createGif(gifSrc, true);   // Second copy - 5 frame delay
+            createGif(gifSrc, true);   // Second copy - random delay
+            createGif(gifSrc, true);   // Third copy - random delay
         });
         
         // Add click handler to reposition GIFs
